@@ -1,0 +1,81 @@
+<div class="container-fluid search-wrapper mt-3">
+    <div class="search-row mb-4">
+        {{#unless query}}
+        {{!-- <h3>Feature Film (Sorted by Number of Popularity Descending)</h3> --}}
+        <h3>Feature Film - {{sortingDisplay}}</h3>
+        {{/unless}}
+        {{#if searchString}}
+        <h3>Results for <b>"{{searchString}}"</b></h3>
+        {{/if}}
+    </div>
+
+    {{#if showSort}}
+    <div class="row search-sorting-option">
+        <ul>
+            <li><b>Sort By:</b></li>
+            <li><a href="/search?sort=popularity.desc&page=1">Popularity</a></li>
+            <li><a href="/search?sort=vote_average.desc&page=1">User Rating</a></li>
+            <li><a href="/search?sort=vote_count.desc&page=1">Vote Count</a></li>
+            <li><a href="/search?sort=release_date.desc&page=1">Release Date</a></li>
+            <li><a href="/search?sort=revenue.desc&page=1">Revenue</a></li>
+            {{!-- <li><a href="/search/">Date of Your Rating</a></li>
+            <li><a href="/search/">Your Rating</a></li> --}}
+        </ul>
+    </div>
+    {{/if}}
+
+    {{#each searchArr}}
+    <div class="row search_card mb-3">
+        <div class="col-2">
+            <a href="../movie/{{this.id}}">
+                <img class="img-fluid search_card_poster" width="180" height="auto"
+                    src="https://image.tmdb.org/t/p/w300{{this.poster_path}}">
+            </a>
+            <div class="row d-flex justify-content-center">
+
+                {{#if ../user}}
+                {{#if this.watchlistCheck}}
+                {{!-- Show watchlist-tick button if true --}}
+                <a href="/watchlist">
+                    <button class="search-watchlist-success-style btn" data-movieid={{this.id}}>
+                        WATCHLIST<i id={{this.id}} class="fas fa-check"></i>
+                    </button>
+                </a>
+                {{else}}
+                {{!-- Else show watchlist-plus button --}}
+                <button class="search-watchlist-add-style watchlist-add-btn btn" data-movieid={{this.id}}>
+                    WATCHLIST<i id={{this.id}} class="fas fa-plus"></i>
+                </button>
+                {{/if}}
+                {{/if}}
+
+            </div>
+        </div>
+        <div class="col-10">
+            <p>
+                <a href="../movie/{{this.id}}">
+                    {{math @index "+" 1}}. {{this.title}} ({{slicedate this.release_date}})
+                </a>
+            </p>
+            <p><i class="fa fa-star"></i>
+                {{this.vote_average}}
+            </p>
+            <p>{{genreconverter this.genre_ids}}</p>
+            <p>{{this.overview}}</p>
+            <p>{{this.watchlistCheck}}</p>
+        </div>
+    </div>
+    {{/each}}
+    {{!-- {{#if showPage}}
+    <div class="row search-sorting-option">
+        <ul>
+            <li><a href="/search/util/next"><b>Next</b></a></li>
+            <li><a href="/search?q=vote_average.desc"><b>1</b></a></li>
+            <li><a href="/search?q=vote_average.desc"><b>2</b></a></li>
+            <li><a href="/search?q=vote_average.desc"><b>3</b></a></li>
+            <li><a href="/search?q=vote_average.desc"><b>4</b></a></li>
+            <li><a href="/search?q=popularity.desc"><b>5</b></a></li>
+        </ul>
+    </div>
+    {{/if}} --}}
+</div>

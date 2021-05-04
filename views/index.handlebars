@@ -1,0 +1,222 @@
+{{!-- Main index page with movie images --}}
+<div class=" mt-3 container-movie">
+  <div class="movie">
+    <video width="945" loop autoplay muted>
+      <source src="assets/comingtoamerica.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+<div class="movie-info">
+  <p>
+  <h4><b>Coming 2 America (2021)</h4></b>
+  </p>
+  <b>Rating: </b>6.0 <i class="fa fa-star"></i>
+  <br>
+  <br>
+  <b>Overview:</b>
+  Prince Akeem Joffer is set to become King of Zamunda when he discovers he has a son he never knew about in America –
+  a
+  street savvy Queens native named Lavelle. Honoring his royal father's dying wish to groom this son as the crown
+  prince, Akeem and Semmi set off to America once again.
+</div>
+
+
+
+
+{{!-- CAROUSEL --}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>New <b>Releases</b></h2>
+      <div id="myCarousel" class="carousel slide mt-5" data-ride="carousel" data-interval="0">
+        <div class="carousel-inner">
+          {{#each getNow}}
+          <div class="carousel-item {{#if @first}}active{{/if}}">
+            <div class="row">
+              {{#each this}}
+              <div class="col-sm-3">
+                <div class="thumb-wrapper">
+                  <div class="img-box">
+                    <a href="/movie/{{this.id}}">
+                      <img src="https://image.tmdb.org/t/p/w342{{this.poster_path}}" class="img-fluid" alt="">
+                    </a>
+                  </div>
+                  <div class="thumb-content">
+                    <div class="star-rating">
+                      <div class="list-inline">
+                        {{this.vote_average}} <i class="fa fa-star"></i>
+                      </div>
+                    </div>
+                    <div class="carousel-title-box">
+                      <a href="/movie/{{this.id}}">
+                        <h4 class="carousel-title">{{this.title}}</h4>
+                      </a>
+                    </div>
+                    {{#if ../../user}}
+                    {{#if this.watchlistCheck}}
+                    {{!-- Show watchlist-tick button if true --}}
+                    <a href="/watchlist">
+                      <button class="index-watchlist-success-style btn" data-movieid={{this.id}}>
+                        WATCHLIST<i id={{this.id}} class="fas fa-check"></i>
+                      </button>
+                    </a>
+                    {{else}}
+                    {{!-- Else show watchlist-plus button --}}
+                    <button class="index-watchlist-add-style watchlist-add-btn btn" data-movieid={{this.id}}>
+                      WATCHLIST<i id={{this.id}} class="fas fa-plus"></i>
+                    </button>
+                    {{/if}}
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+              {{/each }}
+            </div>
+          </div>
+          {{/each}}
+        </div>
+        <!-- Carousel controls -->
+        <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+          <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+
+{{!-- TOP 10 MOST REVIEWED MOVIES --}}
+{{!-- CAROUSEL --}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Top <b>Rated</b></h2>
+      <div id="myCarousel-1" class="carousel slide mt-5" data-ride="carousel" data-interval="0">
+        <!-- Carousel indicators -->
+        {{!-- <ol class="carousel-indicators">
+          <li data-target="#myCarousel-1" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel-1" data-slide-to="1"></li>
+          <li data-target="#myCarousel-1" data-slide-to="2"></li>
+        </ol> --}}
+        <!-- Wrapper for carousel items -->
+        <div class="carousel-inner">
+          {{#each getTop}}
+          <div class="carousel-item {{#if @first}}active{{/if}}">
+            <div class="row">
+              {{#each this}}
+              <div class="col-sm-3">
+                <div class="thumb-wrapper">
+                  <div class="img-box">
+                    <a href="/movie/{{this.id}}">
+                      <img src="https://image.tmdb.org/t/p/w342{{this.poster_path}}" class="img-fluid" alt="">
+                    </a>
+                  </div>
+                  <div class="thumb-content">
+                    <div class="star-rating">
+                      <div class="list-inline">
+                        {{this.vote_average}} <i class="fa fa-star"></i>
+                      </div>
+                    </div>
+                    <div class="carousel-title-box">
+                      <a href="/movie/{{this.id}}">
+                        <h4 class="carousel-title">{{this.title}}</h4>
+                      </a>
+                    </div>
+                    {{#if ../../user}}
+                    {{#if this.watchlistCheck}}
+                    {{!-- Show watchlist-tick button if true --}}
+                    <a href="/watchlist">
+                      <button class="index-watchlist-success-style btn" data-movieid={{this.id}}>
+                        WATCHLIST<i id={{this.id}} class="fas fa-check"></i>
+                      </button>
+                    </a>
+                    {{else}}
+                    {{!-- Else show watchlist-plus button --}}
+                    <button class="index-watchlist-add-style watchlist-add-btn btn" data-movieid={{this.id}}>
+                      WATCHLIST<i id={{this.id}} class="fas fa-plus"></i>
+                    </button>
+                    {{/if}}
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          {{/each}}
+        </div>
+        <!-- Carousel controls -->
+        <a class="carousel-control-prev" href="#myCarousel-1" data-slide="prev">
+          <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel-1" data-slide="next">
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Genres --}}
+<section id="genres">
+  <h2 class="mb-5"><b>Genres</b></h2>
+  <section class="container-images">
+    <div class="genre_div genre-box-1" data-genre="action">
+      {{!-- <img src="/assets/genres/action.jpeg" alt="action" /> --}}
+      <span class="description">
+        <h2><b>Action</h2></b>
+      </span>
+    </div>
+    <div class="genre_div genre-box-2" data-genre="animation">
+      {{!-- <img src="/assets/genres/animation2.jpeg" alt="animation" /> --}}
+      <span class="description">
+        <h2><b>Animation</h2></b>
+      </span>
+    </div>
+    <div class="genre_div genre-box-3" data-genre="comedy">
+      {{!-- <img src="/assets/genres/comedy2.jpeg" alt="comedy" /> --}}
+      <span class="description">
+        <h2><b>Comedy</h2></b>
+      </span>
+    </div>
+    <div class="genre_div genre-box-4" data-genre="drama">
+      {{!-- <img src="/assets/genres/drama.jpeg" alt="drama" /> --}}
+      <span class="description">
+        <h2><b>Drama</h2></b>
+      </span>
+    </div>
+    <div class="genre_div genre-box-5" data-genre="fantasy">
+      {{!-- <img src="/assets/genres/fantasy.jpeg" alt="fantasy" /> --}}
+      <span class="description">
+        <h2><b>Fantasy</h2></b>
+      </span>
+    </div>
+    <div class="genre_div genre-box-6" data-genre="horror">
+      {{!-- <img src="/assets/genres/horror.jpeg" alt="horror" /> --}}
+      <span class="description">
+        <h2><b>Horror</h2></b>
+      </span>
+    </div>
+    <div class="genre_div genre-box-7" data-genre="romance">
+      {{!-- <img src="/assets/genres/romance.jpeg" alt="romance" /> --}}
+      <span class="description">
+        <h2><b>Romance</h2></b>
+      </span>
+    </div>
+    <div class="genre_div genre-box-8" data-genre="thriller">
+      {{!-- <img src="/assets/genres/thriller.jpeg" alt="thriller" /> --}}
+      <span class="description">
+        <h2><b>Thriller</h2></b>
+      </span>
+    </div>
+    <div class="genre_div genre-box-9" data-genre="crime">
+      {{!-- <img src="/assets/genres/crime.jpeg" alt="crime" /> --}}
+      <span class="description">
+        <h2><b>Crime</h2></b>
+      </span>
+    </div>
+  </section>
+</section>

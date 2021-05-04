@@ -1,0 +1,58 @@
+.row {
+  height: auto;
+}
+
+.search-row {
+  height: auto;
+}
+
+.search-sorting-option ul {
+  text-align: center;
+}
+
+.search-sorting-option li {
+  display: inline-block;
+  list-style: none;
+  line-height: 50px;
+}
+
+.search-sorting-option li::after {
+  padding-right: 10px;
+  padding-left: 10px;
+  content: "|";
+  float: right;
+}
+
+.search-sorting-option li:last-child::after {
+  display: none;
+}
+
+.search_card_poster {
+  position: relative;
+}
+
+.search-watchlist-add-style {
+  color: #fff;
+  background: #ffbe08 !important;
+  border-radius: 3px;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background: none;
+  border: 1px solid #ccc;
+  padding: 7px 30px;
+  margin-top: 10px;
+  line-height: 16px;
+  background-color: #7575752d;
+}
+
+.search-watchlist-add-style i {
+  margin-left: 5px;
+}
+
+.search-watchlist-add-style:hover {
+  color: #000;
+  background: #ccc !important;
+  border-color: #ccc !important;
+  box-shadow: none;
+}
