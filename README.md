@@ -1,6 +1,6 @@
 # MÖVIEPICK
 
-The MÖVIEPICK application is a movie database that is simple and easy to navigate. 
+The MÖVIEPICK application is a only movie database that is simple and easy to navigate. 
 
 It uses the Moviedb API (https://www.themoviedb.org/) and allows users to search and sort movies by popularity, user rating, vote count, release date, etc. Users are also able to sign in, edit their personal profile by uploading images of their favourite movie, leave reviews and add movies to their watchlist. Lastly, this application has a ecommerce store where people can buy MÖVIEPICK swag.
 
